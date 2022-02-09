@@ -1,0 +1,15 @@
+C:\Users\Jv Cataquiz\OOP\PdfResumeCreator\PDFRESUMECREATOR\bin\Debug\PDFRESUMECREATOR.exe.config
+C:\Users\Jv Cataquiz\OOP\PdfResumeCreator\PDFRESUMECREATOR\bin\Debug\PDFRESUMECREATOR.exe
+C:\Users\Jv Cataquiz\OOP\PdfResumeCreator\PDFRESUMECREATOR\bin\Debug\PDFRESUMECREATOR.pdb
+C:\Users\Jv Cataquiz\OOP\PdfResumeCreator\PDFRESUMECREATOR\bin\Debug\BouncyCastle.Crypto.dll
+C:\Users\Jv Cataquiz\OOP\PdfResumeCreator\PDFRESUMECREATOR\bin\Debug\itextsharp.dll
+C:\Users\Jv Cataquiz\OOP\PdfResumeCreator\PDFRESUMECREATOR\bin\Debug\Newtonsoft.Json.dll
+C:\Users\Jv Cataquiz\OOP\PdfResumeCreator\PDFRESUMECREATOR\bin\Debug\itextsharp.xml
+C:\Users\Jv Cataquiz\OOP\PdfResumeCreator\PDFRESUMECREATOR\bin\Debug\Newtonsoft.Json.xml
+C:\Users\Jv Cataquiz\OOP\PdfResumeCreator\PDFRESUMECREATOR\obj\Debug\PDFRESUMECREATOR.csproj.AssemblyReference.cache
+C:\Users\Jv Cataquiz\OOP\PdfResumeCreator\PDFRESUMECREATOR\obj\Debug\PDFRESUMECREATOR.ResumeCreator.resources
+C:\Users\Jv Cataquiz\OOP\PdfResumeCreator\PDFRESUMECREATOR\obj\Debug\PDFRESUMECREATOR.Properties.Resources.resources
+C:\Users\Jv Cataquiz\OOP\PdfResumeCreator\PDFRESUMECREATOR\obj\Debug\PDFRESUMECREATOR.csproj.GenerateResource.cache
+C:\Users\Jv Cataquiz\OOP\PdfResumeCreator\PDFRESUMECREATOR\obj\Debug\PDFRESUMECREATOR.csproj.CoreCompileInputs.cache
+C:\Users\Jv Cataquiz\OOP\PdfResumeCreator\PDFRESUMECREATOR\obj\Debug\PDFRESUMECREATOR.exe
+C:\Users\Jv Cataquiz\OOP\PdfResumeCreator\PDFRESUMECREATOR\obj\Debug\PDFRESUMECREATOR.pdb
