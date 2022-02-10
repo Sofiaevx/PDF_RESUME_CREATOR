@@ -34,13 +34,30 @@ namespace PDFRESUMECREATOR
             Document jsontopdf = new Document();
             PdfWriter.GetInstance(jsontopdf, new FileStream("VILLANUEVA_SOFIARUTH.pdf", FileMode.Create));
             jsontopdf.Open();
-
+            string[] variable = { "CONTACT", "PHONE", "ADDRESS", "EMAIL","OBJECTIVE" };
             //for json file value
             iTextSharp.text.Image myimage = iTextSharp.text.Image.GetInstance(output.MYIMAGE);
             Paragraph f_name = new Paragraph(output.FULLNAME);
             Paragraph prof = new Paragraph(output.PROFESSION);
-            Paragraph con = new Paragraph("CONTACT");
             Paragraph phone = new Paragraph(output.PHONE);
+            Paragraph address = new Paragraph(output.ADDRESS);
+            Paragraph email = new Paragraph(output.EMAIL);
+            Paragraph about = new Paragraph(output.ABOUTME);
+
+            //variable
+            Paragraph con = new Paragraph(variable[0]);
+            Paragraph ph = new Paragraph(variable[1]);
+            Paragraph add = new Paragraph(variable[2]);
+            Paragraph em = new Paragraph(variable[3]);
+            Paragraph ob = new Paragraph(variable[4]);
+
+            //variable designing
+            con.Font.Color = BaseColor.WHITE;
+            ph.Font.Color = BaseColor.WHITE;
+            add.Font.Color = BaseColor.WHITE;
+            em.Font.Color = BaseColor.WHITE;
+            
+            
 
             //image Scaling
             myimage.ScaleAbsolute(100, 100);
@@ -51,20 +68,27 @@ namespace PDFRESUMECREATOR
 
             prof.Font.Size = 20;
             prof.Font.Color = BaseColor.DARK_GRAY;
-            con.Font.Color = BaseColor.WHITE;
             phone.Font.Color = BaseColor.WHITE;
 
             //table
             PdfPTable table = new PdfPTable(3);
             table.HorizontalAlignment = 1;
             table.WidthPercentage = 100f;
-            
+
+            //viable makiing new pdfcell
+            PdfPCell contact = new PdfPCell(new Phrase(con));
+            PdfPCell add1 = new PdfPCell(new Phrase(add));
+            PdfPCell ph1 = new PdfPCell(new Phrase(ph));
+            PdfPCell em1 = new PdfPCell(new Phrase(em));
+            PdfPCell ob1 = new PdfPCell(new Phrase(ob));
             //making a new pdfcell
             PdfPCell my_img = new PdfPCell(myimage, false);
             PdfPCell my_fullname = new PdfPCell(new Phrase(f_name));
             PdfPCell my_prof = new PdfPCell(new Phrase(prof));
             PdfPCell my_phone= new PdfPCell(new Phrase(phone));
-            PdfPCell contact = new PdfPCell(new Phrase(con));
+            PdfPCell my_address= new PdfPCell(new Phrase(address));
+            PdfPCell my_email = new PdfPCell(new Phrase(email));
+            PdfPCell my_about = new PdfPCell(new Phrase(about));
 
             my_img.BackgroundColor = BaseColor.LIGHT_GRAY;
 
@@ -79,8 +103,18 @@ namespace PDFRESUMECREATOR
 
             contact.HorizontalAlignment = 1;
             contact.BackgroundColor = BaseColor.BLACK;
+            add1.HorizontalAlignment = 1;
+            ph1.HorizontalAlignment = 1;
+            em1.HorizontalAlignment = 1;
+            add1.BackgroundColor = BaseColor.BLACK;
+            ph1.BackgroundColor = BaseColor.BLACK;
+            em1.BackgroundColor = BaseColor.BLACK;
+
+
             my_phone.HorizontalAlignment = 1;
             my_phone.BackgroundColor = BaseColor.BLACK;
+            my_about.Rowspan = 6;
+            my_about.Colspan = 2;
 
             //removing border
             my_img.BorderWidth = 0;
@@ -95,12 +129,22 @@ namespace PDFRESUMECREATOR
 
             
             table.AddCell(contact);
-            table.AddCell("");
-            table.AddCell("");
-            table.AddCell(my_phone);
-            table.AddCell("");
+            table.AddCell(ob1);
             table.AddCell("");
 
+            table.AddCell(ph1);
+            table.AddCell(my_about);
+          
+            table.AddCell(my_phone);
+           
+            table.AddCell(add1);
+         
+            table.AddCell(my_address);
+            
+            table.AddCell(em1);
+           
+            table.AddCell(my_email);
+           
             jsontopdf.Add(table);
 
             
@@ -116,6 +160,9 @@ namespace PDFRESUMECREATOR
             public string FULLNAME{ get; set; }
             public string PROFESSION { get; set; }
             public string PHONE { get; set; }
+            public string ADDRESS { get; set; }
+            public string EMAIL { get; set; }
+            public string ABOUTME { get; set; }
         }
     }
 }
