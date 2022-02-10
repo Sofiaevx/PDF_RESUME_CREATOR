@@ -19,17 +19,21 @@ namespace PDFRESUMECREATOR
     {
         //this json path leads to json file, located at debug folder 
         string jsonpath = "SofiaVillanueva.json";
+        string openjson;
         public ResumeCreator()
         {
             InitializeComponent();
         }
-
+        private void buttonload_Click(object sender, EventArgs e)
+        {
+            openjson = File.ReadAllText(jsonpath);
+            buttonConvert.Visible = true;
+        }
         private void buttonConvert_Click(object sender, EventArgs e)
         {
-            string openjson = File.ReadAllText(jsonpath);
-
-            //Organizing json context
-            Information_json output = JsonConvert.DeserializeObject<Information_json>(openjson);
+        
+             //Organizing json context
+           Information_json output = JsonConvert.DeserializeObject<Information_json>(openjson);
             //creating pdf file located at bin-> Debug folder
             Document jsontopdf = new Document();
             PdfWriter.GetInstance(jsontopdf, new FileStream("VILLANUEVA_SOFIARUTH.pdf", FileMode.Create));
@@ -38,7 +42,7 @@ namespace PDFRESUMECREATOR
             //for json file value
             Image myimage =Image.GetInstance(output.MYIMAGE);
             Paragraph f_name = new Paragraph(output.FULLNAME);
-            Paragraph f_name1 = new Paragraph(output.FULLNAME);
+            Paragraph f_name1 = new Paragraph("\n\n" +  output.FULLNAME);
             Paragraph prof = new Paragraph(output.PROFESSION);
             Paragraph phone = new Paragraph(output.PHONE);
             Paragraph address = new Paragraph(output.ADDRESS);
@@ -153,6 +157,7 @@ namespace PDFRESUMECREATOR
             ex2.IndentationLeft = 50;
             hereby.Alignment = Element.ALIGN_CENTER;
             f_name1.Alignment = Element.ALIGN_RIGHT;
+            Signature.IndentationRight = 20;
             Signature.ScalePercent(30f);
             Signature.Alignment = Image.UNDERLYING | Image.ALIGN_RIGHT;
 
@@ -354,5 +359,7 @@ namespace PDFRESUMECREATOR
             public string HEREBY{ get; set; }
             public string SIGNATURE { get; set; }
         }
+
+       
     }
 }
