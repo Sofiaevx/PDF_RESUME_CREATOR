@@ -1,5 +1,20 @@
 {
     "MYIMAGE": "fia.png",
     "FULLNAME": "Sofia Ruth E. Villanueva",
-     "AGE": "22"
+    "PROFESSION": "Graphic Design",
+    "PHONE": "+123-4567-890",
+    "ADDRESS": "123 Anywhere St., Any City",
+    "EMAIL": "helloworld@email.com",
+    "SKILL1": "Illustration",
+    "SKILL2": "Drawing",
+    "SKILL3": "Motion Graphic",
+    "SKILL4": "UI/UX",
+    "REF1": "John Doe           Marketing Coordinator          +123-4567-890           JD Company",
+    "REF2": "Jane Doe           Director of Sales           +123-4567-890           ABC, Inc.",
+    "ABOUTME": "I work as a graphic design, my daily job is to create Illustration and branding for company or client products. I'm used to working under pressure and i love all of creative process.",
+    "ELEM": "2014 - 2018        Elementary School",
+    "SECONDARY": "2018 - 2019       Secondary School",
+    "COLLEGE": "2019 - 2020         Tertiary Education",
+    "EXP1": "2020       Graphic Designer - JD Company       Create Branding Design for clients product          Making branding design for client or company needs",
+    "EXP2": "2021       Senior Graphic Designer - ABC, Inc.         Create design for product promotion from companies      Making design content for branding client  needs        Making illustration for branding client  needs"
 }

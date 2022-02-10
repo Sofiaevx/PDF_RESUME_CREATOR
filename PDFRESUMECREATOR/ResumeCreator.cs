@@ -38,38 +38,68 @@ namespace PDFRESUMECREATOR
             //for json file value
             iTextSharp.text.Image myimage = iTextSharp.text.Image.GetInstance(output.MYIMAGE);
             Paragraph f_name = new Paragraph(output.FULLNAME);
-            Paragraph age = new Paragraph(output.AGE);
+            Paragraph prof = new Paragraph(output.PROFESSION);
+            Paragraph con = new Paragraph("CONTACT");
+            Paragraph phone = new Paragraph(output.PHONE);
 
+            //image Scaling
             myimage.ScaleAbsolute(100, 100);
            
-          
+          //designing font
             f_name.Font.Size = 15;
-            f_name.Font.Color = BaseColor.WHITE;
-            age.Font.Size = 15;
-            age.Font.Color = BaseColor.WHITE;
+            f_name.Font.Color = BaseColor.BLACK;
+
+            prof.Font.Size = 20;
+            prof.Font.Color = BaseColor.DARK_GRAY;
+            con.Font.Color = BaseColor.WHITE;
+            phone.Font.Color = BaseColor.WHITE;
 
             //table
             PdfPTable table = new PdfPTable(3);
             table.HorizontalAlignment = 1;
             table.WidthPercentage = 100f;
-
+            
+            //making a new pdfcell
             PdfPCell my_img = new PdfPCell(myimage, false);
             PdfPCell my_fullname = new PdfPCell(new Phrase(f_name));
-            PdfPCell my_age = new PdfPCell(new Phrase(age));
+            PdfPCell my_prof = new PdfPCell(new Phrase(prof));
+            PdfPCell my_phone= new PdfPCell(new Phrase(phone));
+            PdfPCell contact = new PdfPCell(new Phrase(con));
 
-            my_img.BackgroundColor = BaseColor.BLACK;
+            my_img.BackgroundColor = BaseColor.LIGHT_GRAY;
+
             my_fullname.HorizontalAlignment = Element.ALIGN_CENTER;
             my_fullname.VerticalAlignment = Element.ALIGN_MIDDLE;
-            my_fullname.BackgroundColor = BaseColor.BLACK;
+            my_fullname.BackgroundColor = BaseColor.LIGHT_GRAY;
 
-            my_age.HorizontalAlignment = Element.ALIGN_RIGHT;
-            my_age.VerticalAlignment = Element.ALIGN_MIDDLE;
-            my_age.BackgroundColor = BaseColor.BLACK;
+            my_prof.RightIndent = 5;
+            my_prof.HorizontalAlignment = Element.ALIGN_RIGHT;
+            my_prof.VerticalAlignment = Element.ALIGN_MIDDLE;
+            my_prof.BackgroundColor = BaseColor.LIGHT_GRAY;
+
+            contact.HorizontalAlignment = 1;
+            contact.BackgroundColor = BaseColor.BLACK;
+            my_phone.HorizontalAlignment = 1;
+            my_phone.BackgroundColor = BaseColor.BLACK;
+
+            //removing border
+            my_img.BorderWidth = 0;
+            my_fullname.BorderWidth = 0;
+            my_prof.BorderWidth = 0;
+
             //inserting data to pdf
+            //Header
             table.AddCell(my_img);
             table.AddCell(my_fullname);
-            table.AddCell(my_age);
+            table.AddCell(my_prof);
+
             
+            table.AddCell(contact);
+            table.AddCell("");
+            table.AddCell("");
+            table.AddCell(my_phone);
+            table.AddCell("");
+            table.AddCell("");
 
             jsontopdf.Add(table);
 
@@ -84,7 +114,8 @@ namespace PDFRESUMECREATOR
         {
             public string MYIMAGE { get; set; }
             public string FULLNAME{ get; set; }
-            public string AGE { get; set; }
+            public string PROFESSION { get; set; }
+            public string PHONE { get; set; }
         }
     }
 }
