@@ -13,9 +13,11 @@
     "ELEM": "2014 - 2018        Elementary School",
     "SECONDARY": "2018 - 2019        Secondary School",
     "COLLEGE": "2019 - 2020        Tertiary Education",
-    "REF1": "John Doe           Marketing Coordinator          +123-4567-890           JD Company",
-    "REF2": "Jane Doe           Director of Sales           +123-4567-890           ABC, Inc.",
+    "REF1": "John Doe                     Marketing Coordinator              +123-4567-890                             JD Company",
+    "REF2": "Jane Doe                               Director of Sales                 +123-4567-890                        ABC, Inc.",
     
-    "EXP1": "2020       Graphic Designer - JD Company       Create Branding Design for clients product          Making branding design for client or company needs",
-    "EXP2": "2021       Senior Graphic Designer - ABC, Inc.         Create design for product promotion from companies      Making design content for branding client  needs        Making illustration for branding client  needs"
+    "EXP1": "2020                  Graphic Designer - JD Company  ",
+    "EXP2": "2021                  Senior Graphic Designer - ABC, Inc. ",
+    "HEREBY": "I hereby certify that, to the best of my knowledge, the provided information is true and accurate.",
+    "SIGNATURE":"signature.png"
 }

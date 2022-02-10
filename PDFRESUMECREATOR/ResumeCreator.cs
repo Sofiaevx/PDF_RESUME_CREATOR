@@ -7,7 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-
+using Image = iTextSharp.text.Image;
 using System.IO;
 using Newtonsoft.Json;
 using iTextSharp.text;
@@ -34,10 +34,11 @@ namespace PDFRESUMECREATOR
             Document jsontopdf = new Document();
             PdfWriter.GetInstance(jsontopdf, new FileStream("VILLANUEVA_SOFIARUTH.pdf", FileMode.Create));
             jsontopdf.Open();
-            string[] variable = { "CONTACT", "PHONE", "ADDRESS", "EMAIL","OBJECTIVE", "EXPERTISE", "EDUCATIONAL BACKGROUND"};
+            string[] variable = { "CONTACT", "PHONE", "ADDRESS", "EMAIL","OBJECTIVE", "EXPERTISE", "EDUCATIONAL BACKGROUND","REFFERENCE","EXPERIENCE"};
             //for json file value
-            iTextSharp.text.Image myimage = iTextSharp.text.Image.GetInstance(output.MYIMAGE);
+            Image myimage =Image.GetInstance(output.MYIMAGE);
             Paragraph f_name = new Paragraph(output.FULLNAME);
+            Paragraph f_name1 = new Paragraph(output.FULLNAME);
             Paragraph prof = new Paragraph(output.PROFESSION);
             Paragraph phone = new Paragraph(output.PHONE);
             Paragraph address = new Paragraph(output.ADDRESS);
@@ -50,6 +51,13 @@ namespace PDFRESUMECREATOR
             Paragraph elem = new Paragraph(output.ELEM);
             Paragraph second = new Paragraph(output.SECONDARY);
             Paragraph college = new Paragraph(output.COLLEGE);
+            Paragraph ref1 = new Paragraph(output.REF1);
+            Paragraph ref2 = new Paragraph(output.REF2);
+            Paragraph ex1 = new Paragraph(output.EXP1);
+            Paragraph ex2 = new Paragraph(output.EXP2);
+            Paragraph hereby = new Paragraph("\n\n\n"+ output.HEREBY);
+           Image Signature = Image.GetInstance(output.SIGNATURE);
+
 
             //variable
             Paragraph con = new Paragraph(variable[0]);
@@ -59,6 +67,10 @@ namespace PDFRESUMECREATOR
             Paragraph ob = new Paragraph(variable[4]);
             Paragraph exp = new Paragraph(variable[5]);
             Paragraph edu = new Paragraph(variable[6]);
+            Paragraph refference = new Paragraph(variable[7]);
+            Paragraph experience = new Paragraph(variable[8]);
+
+
             con.Font.Size = 18;
             con.Alignment = Element.ALIGN_CENTER;
             con.SetLeading(10, 1);
@@ -73,43 +85,26 @@ namespace PDFRESUMECREATOR
             em.SetLeading(10, 1);
             ob.Font.Size = 18;
             ob.IndentationLeft = 5;
-            about.Font.Size = 12;
-            about.IndentationRight = 5;
-            about.IndentationLeft = 5;
-            about.Alignment = Element.ALIGN_JUSTIFIED;
-            about.SetLeading(10, 1);
-            exp.Font.Size = 18;
-            exp.Alignment = Element.ALIGN_CENTER;
-            exp.SetLeading(10, 1);
-            edu.Font.Size = 18;
-            edu.IndentationLeft = 5;
-            skill1.Font.Color = BaseColor.LIGHT_GRAY;
-            skill1.Alignment = Element.ALIGN_CENTER;
-            skill1.SetLeading(8, 1);
-            skill2.Font.Color = BaseColor.LIGHT_GRAY;
-            skill2.Alignment = Element.ALIGN_CENTER;
-            skill2.SetLeading(6, 1);
-            skill3.Font.Color = BaseColor.LIGHT_GRAY;
-            skill3.Alignment = Element.ALIGN_CENTER;
-            skill3.SetLeading(6, 1);
-            skill4.Font.Color = BaseColor.LIGHT_GRAY;
-            skill4.Alignment = Element.ALIGN_CENTER;
-            skill4.SetLeading(6, 1);
+            refference.Font.Size = 18;
+            refference.Alignment = Element.ALIGN_CENTER;
+            refference.IndentationLeft = 5;
+            experience.Font.Size = 18;
+            experience.IndentationLeft = 5;
+            experience.SetLeading(10, 1);
 
-            elem.IndentationLeft = 15;
-            second.IndentationLeft = 15;
-            college.IndentationLeft = 15;
-            //variable designing
+
+            //variable designing color
             exp.Font.Color = BaseColor.ORANGE;
             con.Font.Color = BaseColor.ORANGE;
             ph.Font.Color = BaseColor.WHITE;
             add.Font.Color = BaseColor.WHITE;
             em.Font.Color = BaseColor.WHITE;
-            
+            refference.Font.Color = BaseColor.ORANGE;
+
             //image Scaling
             myimage.ScaleAbsolute(100, 100);
       
-          //designing font
+           //designing font
             f_name.Font.Size = 15;
             f_name.Font.Color = BaseColor.BLACK;
             prof.Font.Size = 15;
@@ -123,6 +118,43 @@ namespace PDFRESUMECREATOR
             address.Font.Color = BaseColor.LIGHT_GRAY;
             address.Alignment = Element.ALIGN_CENTER;
             address.SetLeading(6, 1);
+            about.Font.Size = 12;
+            about.IndentationRight = 5;
+            about.IndentationLeft = 5;
+            about.Alignment = Element.ALIGN_JUSTIFIED;
+            about.SetLeading(10, 1);
+            exp.Font.Size = 18;
+            exp.Alignment = Element.ALIGN_CENTER;
+            exp.SetLeading(10, 1);
+            edu.Font.Size = 18;
+            edu.IndentationLeft = 5;
+            elem.IndentationLeft = 50;
+            second.IndentationLeft = 50;
+            college.IndentationLeft = 50;
+            skill1.Font.Color = BaseColor.LIGHT_GRAY;
+            skill1.Alignment = Element.ALIGN_CENTER;
+            skill1.SetLeading(8, 1);
+            skill2.Font.Color = BaseColor.LIGHT_GRAY;
+            skill2.Alignment = Element.ALIGN_CENTER;
+            skill2.SetLeading(6, 1);
+            skill3.Font.Color = BaseColor.LIGHT_GRAY;
+            skill3.Alignment = Element.ALIGN_CENTER;
+            skill3.SetLeading(6, 1);
+            skill4.Font.Color = BaseColor.LIGHT_GRAY;
+            skill4.Alignment = Element.ALIGN_CENTER;
+            skill4.SetLeading(6, 1);
+            ref1.Font.Color = BaseColor.LIGHT_GRAY;
+            ref1.Alignment = Element.ALIGN_CENTER;
+            ref1.SetLeading(6, 1);
+            ref2.Font.Color = BaseColor.LIGHT_GRAY;
+            ref2.Alignment = Element.ALIGN_CENTER;
+            ref2.SetLeading(6, 1);
+            ex1.IndentationLeft = 50;
+            ex2.IndentationLeft = 50;
+            hereby.Alignment = Element.ALIGN_CENTER;
+            f_name1.Alignment = Element.ALIGN_RIGHT;
+            Signature.ScalePercent(30f);
+            Signature.Alignment = Image.UNDERLYING | Image.ALIGN_RIGHT;
 
             //table
             PdfPTable table = new PdfPTable(3);
@@ -137,7 +169,11 @@ namespace PDFRESUMECREATOR
             PdfPCell em1 = new PdfPCell(new Phrase(em));
             PdfPCell ob1 = new PdfPCell(new Phrase(ob));
             PdfPCell exp1 = new PdfPCell(new Phrase(exp));
-            PdfPCell edu1= new PdfPCell(new Phrase(edu));
+            PdfPCell edu1 = new PdfPCell(new Phrase(edu));
+            PdfPCell reff= new PdfPCell(new Phrase(refference));
+            PdfPCell exper = new PdfPCell(new Phrase(experience));
+
+
             //making a new pdfcell
             PdfPCell my_img = new PdfPCell(myimage, false);
             PdfPCell my_fullname = new PdfPCell(new Phrase(f_name));
@@ -153,6 +189,12 @@ namespace PDFRESUMECREATOR
             PdfPCell my_elem = new PdfPCell(new Phrase(elem));
             PdfPCell my_second = new PdfPCell(new Phrase(second));
             PdfPCell my_college = new PdfPCell(new Phrase(college));
+            PdfPCell my_ref1 = new PdfPCell(new Phrase(ref1));
+            PdfPCell my_ref2 = new PdfPCell(new Phrase(ref2));
+            PdfPCell my_ex1 = new PdfPCell(new Phrase(ex1));
+            PdfPCell my_ex2 = new PdfPCell(new Phrase(ex2));
+            PdfPCell my_hereby = new PdfPCell(new Phrase(hereby));
+
 
             my_img.BackgroundColor = BaseColor.LIGHT_GRAY;
             my_img.HorizontalAlignment = 1;
@@ -184,9 +226,12 @@ namespace PDFRESUMECREATOR
             ph1.BackgroundColor = BaseColor.BLACK;
             em1.BackgroundColor = BaseColor.BLACK;
             edu1.AddElement(edu);
+            
             edu1.Colspan = 2;
             edu1.Rowspan = 2;
-
+            reff.BackgroundColor = BaseColor.BLACK;
+            reff.AddElement(refference);
+            exper.AddElement(experience);
 
             my_phone.AddElement(phone);
             my_phone.BackgroundColor = BaseColor.BLACK;
@@ -209,6 +254,17 @@ namespace PDFRESUMECREATOR
             my_elem.AddElement(elem);
             my_second.AddElement(second);
             my_college.AddElement(college);
+            my_ref1.AddElement(ref1);
+            my_ref2.AddElement(ref2);
+            my_ref1.BackgroundColor = BaseColor.BLACK;
+            my_ref2.BackgroundColor = BaseColor.BLACK;
+            exper.Colspan = 2;
+            my_ex1.Colspan = 2;
+            my_ex1.AddElement(ex1);
+            my_ex1.VerticalAlignment = Element.ALIGN_MIDDLE;
+            my_ex2.Colspan = 2;
+            my_ex2.AddElement(ex2);
+       
             //removing border
             my_img.BorderWidth = 0;
             my_fullname.BorderWidth = 0;
@@ -219,6 +275,9 @@ namespace PDFRESUMECREATOR
             my_elem.BorderWidth = 0;
             my_second.BorderWidth = 0;
             my_college.BorderWidth = 0;
+            exper.BorderWidth = 0;
+            my_ex1.BorderWidth = 0;
+            my_ex2.BorderWidth = 0;
             //inserting data to pdf
             //Header
 
@@ -250,11 +309,23 @@ namespace PDFRESUMECREATOR
           
             table.AddCell(my_skill4);
             table.AddCell(my_college);
+            table.AddCell(reff);
+            table.AddCell(exper);
+        
+            table.AddCell(my_ref1);
+            table.AddCell(my_ex1);
+   
+            table.AddCell(my_ref2);
+            table.AddCell(my_ex2);
+
            
             jsontopdf.Add(table);
             
-            
-            jsontopdf.Close();
+            jsontopdf.Add(hereby);
+            jsontopdf.Add(Signature);
+            jsontopdf.Add(f_name1);
+
+        jsontopdf.Close();
             MessageBox.Show("Pdf Create Successfully!!!");
 
 
@@ -276,6 +347,12 @@ namespace PDFRESUMECREATOR
             public string ELEM { get; set; }
             public string SECONDARY { get; set; }
             public string COLLEGE { get; set; }
+            public string  REF1 { get; set; }
+            public string REF2 { get; set; }
+            public string EXP1 { get; set; }
+            public string EXP2 { get; set; }
+            public string HEREBY{ get; set; }
+            public string SIGNATURE { get; set; }
         }
     }
 }
