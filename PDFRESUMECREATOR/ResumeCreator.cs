@@ -60,21 +60,41 @@ namespace PDFRESUMECREATOR
             Paragraph exp = new Paragraph(variable[5]);
             Paragraph edu = new Paragraph(variable[6]);
             con.Font.Size = 18;
+            con.Alignment = Element.ALIGN_CENTER;
+            con.SetLeading(10, 1);
             ph.Font.Size = 12;
+            ph.Alignment = Element.ALIGN_CENTER;
+            ph.SetLeading(10, 1);
             add.Font.Size = 12;
+            add.Alignment = Element.ALIGN_CENTER;
+            add.SetLeading(10, 1);
             em.Font.Size = 12;
+            em.Alignment = Element.ALIGN_CENTER;
+            em.SetLeading(10, 1);
             ob.Font.Size = 18;
+            ob.IndentationLeft = 5;
             about.Font.Size = 12;
             about.IndentationRight = 5;
             about.IndentationLeft = 5;
             about.Alignment = Element.ALIGN_JUSTIFIED;
             about.SetLeading(10, 1);
             exp.Font.Size = 18;
+            exp.Alignment = Element.ALIGN_CENTER;
+            exp.SetLeading(10, 1);
             edu.Font.Size = 18;
+            edu.IndentationLeft = 5;
             skill1.Font.Color = BaseColor.LIGHT_GRAY;
+            skill1.Alignment = Element.ALIGN_CENTER;
+            skill1.SetLeading(8, 1);
             skill2.Font.Color = BaseColor.LIGHT_GRAY;
+            skill2.Alignment = Element.ALIGN_CENTER;
+            skill2.SetLeading(6, 1);
             skill3.Font.Color = BaseColor.LIGHT_GRAY;
+            skill3.Alignment = Element.ALIGN_CENTER;
+            skill3.SetLeading(6, 1);
             skill4.Font.Color = BaseColor.LIGHT_GRAY;
+            skill4.Alignment = Element.ALIGN_CENTER;
+            skill4.SetLeading(6, 1);
 
             elem.IndentationLeft = 15;
             second.IndentationLeft = 15;
@@ -95,13 +115,20 @@ namespace PDFRESUMECREATOR
             prof.Font.Size = 15;
             prof.Font.Color = BaseColor.BLACK;
             phone.Font.Color = BaseColor.LIGHT_GRAY;
+            phone.Alignment = Element.ALIGN_CENTER;
+            phone.SetLeading(6, 1);
             email.Font.Color = BaseColor.LIGHT_GRAY;
+            email.Alignment = Element.ALIGN_CENTER;
+            email.SetLeading(6, 1);
             address.Font.Color = BaseColor.LIGHT_GRAY;
+            address.Alignment = Element.ALIGN_CENTER;
+            address.SetLeading(6, 1);
 
             //table
             PdfPTable table = new PdfPTable(3);
             table.HorizontalAlignment = 1;
             table.WidthPercentage = 100f;
+            
 
             //viable makiing new pdfcell
             PdfPCell contact = new PdfPCell(new Phrase(con));
@@ -138,34 +165,39 @@ namespace PDFRESUMECREATOR
             my_prof.VerticalAlignment = Element.ALIGN_MIDDLE;
             my_prof.BackgroundColor = BaseColor.LIGHT_GRAY;
 
-            my_address.HorizontalAlignment = 1;
-            my_email.HorizontalAlignment = 1;
+            my_address.AddElement(address);
+            my_email.AddElement(email);
             my_address.BackgroundColor = BaseColor.BLACK;
             my_email.BackgroundColor = BaseColor.BLACK;
-            contact.HorizontalAlignment = 1;
+
+            ob1.Colspan = 2;
+            ob1.AddElement(ob);
             contact.BackgroundColor = BaseColor.BLACK;
-            exp1.HorizontalAlignment = 1;
+            contact.AddElement(con);
+            exp1.AddElement(exp);
             exp1.BackgroundColor = BaseColor.BLACK;
-            add1.HorizontalAlignment = 1;
-            ph1.HorizontalAlignment = 1;
-            em1.HorizontalAlignment = 1;
+            
+            add1.AddElement(add);
+            ph1.AddElement(ph);
+            em1.AddElement(em);
             add1.BackgroundColor = BaseColor.BLACK;
             ph1.BackgroundColor = BaseColor.BLACK;
             em1.BackgroundColor = BaseColor.BLACK;
+            edu1.AddElement(edu);
             edu1.Colspan = 2;
             edu1.Rowspan = 2;
 
 
-            my_phone.HorizontalAlignment = 1;
+            my_phone.AddElement(phone);
             my_phone.BackgroundColor = BaseColor.BLACK;
             my_about.Rowspan = 6;
             my_about.Colspan = 2;
             my_about.Indent = 15;
             my_about.AddElement(about);
-            my_skill1.HorizontalAlignment = 1;
-            my_skill2.HorizontalAlignment = 1;
-            my_skill3.HorizontalAlignment = 1;
-            my_skill4.HorizontalAlignment = 1;
+            my_skill1.AddElement(skill1);
+            my_skill2.AddElement(skill2);
+            my_skill3.AddElement(skill3);
+            my_skill4.AddElement(skill4);
             my_skill1.BackgroundColor = BaseColor.BLACK;
             my_skill2.BackgroundColor = BaseColor.BLACK;
             my_skill3.BackgroundColor = BaseColor.BLACK;
@@ -181,9 +213,15 @@ namespace PDFRESUMECREATOR
             my_img.BorderWidth = 0;
             my_fullname.BorderWidth = 0;
             my_prof.BorderWidth = 0;
-
+            my_about.BorderWidth = 0;
+            ob1.BorderWidth = 0;
+            edu1.BorderWidth = 0;
+            my_elem.BorderWidth = 0;
+            my_second.BorderWidth = 0;
+            my_college.BorderWidth = 0;
             //inserting data to pdf
             //Header
+
             table.AddCell(my_img);
             table.AddCell(my_fullname);
             table.AddCell(my_prof);
@@ -191,7 +229,6 @@ namespace PDFRESUMECREATOR
             //profile and objective Section
             table.AddCell(contact);
             table.AddCell(ob1);
-            table.AddCell("");
             table.AddCell(ph1);
             table.AddCell(my_about);
             table.AddCell(my_phone);
@@ -213,9 +250,9 @@ namespace PDFRESUMECREATOR
           
             table.AddCell(my_skill4);
             table.AddCell(my_college);
-          
+           
             jsontopdf.Add(table);
-
+            
             
             jsontopdf.Close();
             MessageBox.Show("Pdf Create Successfully!!!");
